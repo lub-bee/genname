@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/genname/static/css/main.f324e761.css",
+    "main.js": "/genname/static/js/main.820614fa.js",
+    "static/js/787.aef5b7f0.chunk.js": "/genname/static/js/787.aef5b7f0.chunk.js",
+    "index.html": "/genname/index.html",
+    "main.f324e761.css.map": "/genname/static/css/main.f324e761.css.map",
+    "main.820614fa.js.map": "/genname/static/js/main.820614fa.js.map",
+    "787.aef5b7f0.chunk.js.map": "/genname/static/js/787.aef5b7f0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f324e761.css",
+    "static/js/main.820614fa.js"
+  ]
+}
