@@ -1,13 +1,34 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body{
+    @apply 
+        bg-gray-300
+        w-full h-full p-0 sm:p-6 flex flex-col gap-2
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.h1{
+    @apply
+        uppercase
+        text-base
+}
+
+.info{
+    @apply
+        border-2 border-gray-400 rounded-lg bg-gray-300 p-1 px-2
+}
+
+textarea{
+    @apply
+        border  border-gray-300
+        rounded 
+        resize-none hover:resize-y
+}
+
+input{
+    @apply
+        border border-gray-300
+        rounded
+
 }
