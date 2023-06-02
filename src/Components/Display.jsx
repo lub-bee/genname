@@ -164,7 +164,7 @@ const Display = ({data}) => {
                 {name_list}
             </div>
 
-            <div className='bg-slate-500 text-white px-4 py-1 sm:rounded-b-lg sm:border border-slate-800 text-right text-2xs uppercase tracking-widest'>
+            <div className='bg-slate-500 text-white px-6 py-1 sm:rounded-b-lg sm:border border-slate-800 text-right text-2xs uppercase tracking-widest'>
                 {names.length} over {Number(possibilities()).toLocaleString('ja-JA')} associations possible
             </div>
         </div>
