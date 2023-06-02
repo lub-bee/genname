@@ -18,31 +18,20 @@ const Display = ({data}) => {
      * @returns 
      */
     function generateName(num = 1){
-        let name = null;
+        let name = "";
         let collection = [];
 
-        /* format : 
-
-            a: start_particule
-            j: junction_particule
-            c: core_particule
-            z: end_particule
-
-            (a?)( (j?)(c){0,n}) (z?)
-         */
         
         //generate required number of names
         for(let i = 0; i < num; i++){
             name = "";
 
             //pick a random length in the range
-            const rand_length = getRandom(data.min_lenght, data.max_lenght-1)
+            const rand_length = getRandom(data.min_core_iteration, data.max_core_iteration-1)
 
-            
             //pick the starter particule
             const starter = collectionPick(data.start_particules);
          
-        
             //pick the finish joiner
             const finish_joiner = (data.use_junction_particule)
                                 ? collectionPick(data.junction_particules)
@@ -53,19 +42,21 @@ const Display = ({data}) => {
 
             //generate the core
             let body = ""
-            for(let j = 0; j < rand_length; j++){
+            if(data.use_core_particule){
+                for(let j = 0; j < rand_length; j++){
 
-                //picked joiner
-                const joiner    = (data.use_junction_particule)
-                                ? collectionPick(data.junction_particules)//[join_picker]
-                                : ""
+                    //picked joiner
+                    const joiner    = (data.use_junction_particule)
+                                    ? collectionPick(data.junction_particules)//[join_picker]
+                                    : ""
 
-                //pick the core
-                const core = collectionPick(data.core_particules)//[core_picker]
+                    //pick the core
+                    const core = collectionPick(data.core_particules)//[core_picker]
 
-                //add the section to the name
-                body += joiner + core
+                    //add the section to the name
+                    body += joiner + core
 
+                }
             }
 
 
@@ -80,6 +71,11 @@ const Display = ({data}) => {
         return collection
     }
 
+    /**
+     * 
+     * @param {*} collection 
+     * @returns 
+     */
     function collectionPick(collection){
         const rand = getRandom(0,collection.length-1);
         return collection[rand];
@@ -97,9 +93,14 @@ const Display = ({data}) => {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
+    const handleSort = (e) => {
+        // const sorted = [...names]
+
+        setNames([...names].sort())
+    }
+
     //
     const handleRegen = (e, key=false) => {
-        console.log(key)
         
         if(key){
             const updatedNames = [...names];
@@ -118,22 +119,33 @@ const Display = ({data}) => {
         return <NameItem name={item} key={index} id={index} handleRegen={handleRegen}/>
     })
 
+    function possibilities(){
+        const junction = (data.use_junction_particule ? data.junction_particules.length : 1 )
+        const core = (data.use_core_particule ? data.core_particules.length * data.max_core_iteration : 1)
+        const start = data.start_particules.length
+        const end = data.end_particules.length
+
+
+
+        return junction * core * start * end
+    }
+
 
     return (
-        <div className=''>
+        <div className='flex-1'>
 
             {/* header */}
-            <div className='sm:rounded-t-xl bg-slate-700 text-gray-300 flex items-center px-4 py-1 sm:border border-slate-800'>
+            <div className='sm:rounded-t-lg bg-slate-700 text-gray-300 flex items-center px-6 py-1 sm:border border-slate-800'>
 
                 <div className='flex-1 h1'>
-                    Name generated ({names.length})
+                    Name generated
                 </div>
 
-                <div className='p-2'>
+                <div className='p-2' onClick={handleSort} title="Order Alphabetically">
                     <i className='fa-solid fa-arrow-down-a-z hover:animate-spin-once'></i>
                 </div>
 
-                <div className='p-2' onClick={handleRegen}>
+                <div className='p-2' onClick={handleRegen} title="Regenerate">
                     <i className='fa-solid fa-arrows-rotate hover:animate-spin'></i>
                 </div>
 
@@ -153,8 +165,8 @@ const Display = ({data}) => {
                 {name_list}
             </div>
 
-            <div className='bg-slate-500 text-white px-4 py-1 sm:rounded-b-xl sm:border border-slate-800 text-right text-2xs uppercase tracking-widest'>
-                Something here...
+            <div className='bg-slate-500 text-white px-4 py-1 sm:rounded-b-lg sm:border border-slate-800 text-right text-2xs uppercase tracking-widest'>
+                {names.length} over {Number(possibilities()).toLocaleString('ja-JA')} associations possible
             </div>
         </div>
     );

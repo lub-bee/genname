@@ -2,20 +2,14 @@ import { useState } from "react";
 import Header from "./Components/Header";
 import Form from "./Components/Form";
 import Display from "./Components/Display";
+import Footer from "./Components/Footer";
 
 function App() {
 
     const [data, setData] = useState({
-        //nb min of core_particules generated
-        min_lenght: 1,
-
-        //nb max of core_particules generated
-        max_lenght: 1,
-
-        //
-        use_junction_particule: true,
-
+        
         //particules used between core particules, generaly vowel, group of vowels or special char
+        use_junction_particule: true,
         junction_particules: ["a","i","u","e","o","ou","oe","oë","ū"],        
 
         //particules used to start the name
@@ -29,7 +23,10 @@ function App() {
             "w",
         ],
 
-        //main particules of the name
+        //central particule(s) of the name
+        use_core_particule: true,
+        min_core_iteration: 0,
+        max_core_iteration: 3,
         core_particules: [
             "dr",
             "f",
@@ -51,18 +48,23 @@ function App() {
 
 
     return (
-        <div className="mx-auto max-w-2xl flex flex-col gap-6">
+        <div className="mx-auto max-w-2xl md:max-w-full flex flex-col gap-6">
 
             <Header/>
 
             {/* Preset list here */}
 
-            {/* form */}
-            <Form data={data} setData={setData} />
+            <div className='flex flex-col lg:flex-row sm:gap-6'>
 
-            {/* display */}
-            <Display data={data}/>
+                {/* form */}
+                <Form data={data} setData={setData} />
 
+                {/* display */}
+                <Display data={data}/>
+            
+            </div>
+
+            <Footer />
         </div>
     );
 }
