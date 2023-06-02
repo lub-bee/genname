@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import NameItem from './NameItem';
 import Clipboard from './Clipboard';
-import dayjs from 'dayjs';
 
 const Display = ({data}) => {
 
