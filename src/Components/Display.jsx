@@ -20,6 +20,16 @@ const Display = ({data}) => {
     function generateName(num = 1){
         let name = null;
         let collection = [];
+
+        /* format : 
+
+            a: start_particule
+            j: junction_particule
+            c: core_particule
+            z: end_particule
+
+            (a?)( (j?)(c){0,n}) (z?)
+         */
         
         //generate required number of names
         for(let i = 0; i < num; i++){
@@ -28,56 +38,39 @@ const Display = ({data}) => {
             //pick a random length in the range
             const rand_length = getRandom(data.min_lenght, data.max_lenght-1)
 
-            //BUG - should be a core only when junction are enabled
-            const start_with_vowel = getRandom()
-
-            //pick the starter particule - BUG
-            const starter_picker = getRandom(0,data.junction_particules.length-1);
-
-
-
-            //
-            const finish_picker = getRandom(0,data.end_particules.length-1);
-
-            //bug wrong collection
-            const starter   = start_with_vowel
-                            ? data.junction_particules[starter_picker] 
-                            : ""
             
-                            
-            const finisher = data.end_particules[finish_picker]
-            
-            const finish_join_picker = getRandom(0,data.junction_particules.length-1)
-
+            //pick the starter particule
+            const starter = collectionPick(data.start_particules);
+         
+        
+            //pick the finish joiner
             const finish_joiner = (data.use_junction_particule)
-                                ? data.junction_particules[finish_join_picker]
+                                ? collectionPick(data.junction_particules)
                                 : ""
 
+            //pick the finisher particule
+            const finisher = collectionPick(data.end_particules)
 
+            //generate the core
+            let body = ""
             for(let j = 0; j < rand_length; j++){
 
-                //pick random num in junction
-                const join_picker = getRandom(0,data.junction_particules.length-1)
-                
                 //picked joiner
                 const joiner    = (data.use_junction_particule)
-                                ? data.junction_particules[join_picker]
+                                ? collectionPick(data.junction_particules)//[join_picker]
                                 : ""
 
-                //pick a random num in core
-                const core_picker = getRandom(0,data.core_particules.length-1);
-
                 //pick the core
-                const core = data.core_particules[core_picker]
+                const core = collectionPick(data.core_particules)//[core_picker]
 
                 //add the section to the name
-                name += joiner + core
+                body += joiner + core
 
             }
 
 
-
-            name += data.junction_particules[getRandom(0,data.junction_particules.length-1)] + finisher
+            // name += data.junction_particules[getRandom(0,data.junction_particules.length-1)] + finisher
+            name += starter + body + finish_joiner + finisher
 
 
             collection.push(name)
@@ -85,6 +78,11 @@ const Display = ({data}) => {
         }
         
         return collection
+    }
+
+    function collectionPick(collection){
+        const rand = getRandom(0,collection.length-1);
+        return collection[rand];
     }
 
     /**
@@ -129,6 +127,10 @@ const Display = ({data}) => {
 
                 <div className='flex-1 h1'>
                     Name generated ({names.length})
+                </div>
+
+                <div className='p-2'>
+                    <i className='fa-solid fa-arrow-down-a-z hover:animate-spin-once'></i>
                 </div>
 
                 <div className='p-2' onClick={handleRegen}>

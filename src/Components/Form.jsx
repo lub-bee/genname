@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Form = ({data, setData}) => {
 
@@ -11,10 +11,23 @@ const Form = ({data, setData}) => {
         setData(new_data)
     }
 
+    const [open, setOpen] = useState(true);
+
     return (
-        <div className='bg-white overflow-hidden rounded-lg shadow p-4 flex flex-col gap-4'>
+        <div className='bg-white rounded-lg border border-t-0 border-slate-800 overflow-hidden'>
 
+            <div className='border-b border-slate-800 bg-slate-700 text-gray-300 h1 px-4 py-1 flex items-center'
+                onClick={()=>setOpen(!open)}>
+                <div className='flex-1'>
+                    Settings
+                </div>
+                <div className='p-2'>
+                    <i className='fa-solid fa-chevron-down'></i>
+                </div>
+            </div>
 
+            {open &&<div className='p-4 flex flex-col gap-4'>
+            
                 <div className=''>
                     <div className='h1'>
                         Junction Particules
@@ -31,6 +44,15 @@ const Form = ({data, setData}) => {
                         value={data.junction_particules} 
                         onChange={e=>{handleParticuleUpdate("junction_particules", e)}}
                         className={!data.use_junction_particule?"hidden":""}></textarea>
+                </div>
+
+                <div className=''>
+                    <div className='h1'>
+                        Start Particules
+                    </div>
+                    <textarea 
+                        value={data.start_particules}
+                        onChange={e=>{handleParticuleUpdate("start_particules", e)}}></textarea>
                 </div>
 
                 <div className=''>
@@ -59,6 +81,7 @@ const Form = ({data, setData}) => {
                         onChange={e=>setData({...data, min_lenght: e.target.value})}/>
                     
                 </div>
+
                 <div className=''>
                     <div className='h1'>
                         Min Length (core-particule)
@@ -70,6 +93,7 @@ const Form = ({data, setData}) => {
                         onChange={e=>setData({...data, max_lenght: e.target.value})}/>
                     
                 </div>
+
                 <div className=''>
                     <div className='h1'>
                         Number of name generated
@@ -80,7 +104,9 @@ const Form = ({data, setData}) => {
                         value={data.iteration} 
                         onChange={e=>setData({...data, iteration: e.target.value})}/>
                 </div>
-            </div>
+            </div>}
+
+        </div>
     );
 }
 

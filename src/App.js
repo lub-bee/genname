@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "./Components/Header";
 import Form from "./Components/Form";
 import Display from "./Components/Display";
@@ -13,42 +13,42 @@ function App() {
         max_lenght: 1,
 
         //
-        use_junction_particule: false,
+        use_junction_particule: true,
 
         //particules used between core particules, generaly vowel, group of vowels or special char
         junction_particules: ["a","i","u","e","o","ou","oe","oë","ū"],        
-        
-        //main particules of the name
-        core_particules: ["sylv",
-        "gael",
-        "blood",
-        "chill",
-        "demon",],
-        
-        //particule used for the end of the name, only one used
-        end_particules: ["ary", "anna", "estre","esque","elte"],
 
-        iteration: 99,
+        //particules used to start the name
+        start_particules: [
+            "b",
+            "d","dw",
+            "gr","g","gl",
+            "o",
+            "thr","th",
+            "u",
+            "w",
+        ],
+
+        //main particules of the name
+        core_particules: [
+            "dr",
+            "f",
+            "mb",
+            "l","lr",
+            "thr",
+            "v",
+        ],
+        
+        //particule used to the end of the name
+        end_particules: [
+            "i",
+            "n","nd",
+            "r","rh",
+        ],
+
+        iteration: 30,
     });
 
-    // const [names, setNames] = useState(generateName(data.iteration));
-
-    
-
-    const handleRegen = (key = false) => {
-        if(key){
-            //regen one
-
-
-        } else {
-            //regen all
-        }
-    }
-
-
-
-    // console.log(generateName())
-    // const names = generateName(data.iteration);
 
     return (
         <div className="mx-auto max-w-2xl flex flex-col gap-6">
@@ -61,7 +61,7 @@ function App() {
             <Form data={data} setData={setData} />
 
             {/* display */}
-            <Display data={data} handleRegen={handleRegen}/>
+            <Display data={data}/>
 
         </div>
     );
