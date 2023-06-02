@@ -5,7 +5,7 @@
 body{
     @apply 
         bg-gray-300
-        w-full h-full p-0 sm:p-6 flex flex-col gap-2
+        w-full h-full p-0 pt-6 sm:p-6 flex flex-col gap-2
 }
 
 .h1{
