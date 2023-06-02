@@ -34,3 +34,15 @@ input{
         border border-gray-300
         rounded
 }
+
+.btn{
+    @apply
+        border border-slate-800
+        tracking-widest
+        text-xs uppercase
+        py-1 px-2
+        flex gap-2 justify-center items-center
+        hover:bg-slate-700
+        hover:text-white
+        transition
+}

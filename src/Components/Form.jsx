@@ -1,6 +1,10 @@
+import dayjs from 'dayjs';
+import { saveAs } from 'file-saver';
 import React, { useState } from 'react';
+import FileInput from './FileInput';
 
 const Form = ({data, setData}) => {
+    
 
     const handleParticuleUpdate = (type, e) => {
         const arr = e.target.value.split(",")
@@ -10,6 +14,22 @@ const Form = ({data, setData}) => {
 
         setData(new_data)
     }
+
+    const handleExport = () => {
+        const jsonBlob = new Blob([JSON.stringify(data, null, 4)],{
+            type: 'application/json'
+        });
+        const now = dayjs().format("YYYYMMDDHHmm")
+        saveAs(jsonBlob, `genname-${now}`)
+    }
+
+    const handleImport = (jsonData) => {
+        // Use the parsed JSON data here
+        // console.log(jsonData);
+        setData(jsonData)
+    };
+
+
 
     const [open, setOpen] = useState(true);
 
@@ -27,7 +47,21 @@ const Form = ({data, setData}) => {
             </div>
 
             {open &&<div className='px-6 py-4 flex flex-col gap-4'>
-            
+
+                <div className='flex gap-4 text-slate-700'>
+                    {/* <div className='btn flex-1'>
+                        <i className='fa-solid fa-file-import text-base'></i>
+                        import
+                    </div> */}
+                    <FileInput onFileRead={handleImport} />
+                    
+                    <div className='btn flex-1' onClick={handleExport}>
+                        <i className='fa-solid fa-file-export text-base'></i>
+                        export
+                    </div>
+                    
+
+                </div>
 
                 {/* start */}
                 <div className=''>
@@ -50,7 +84,7 @@ const Form = ({data, setData}) => {
                             value={true}
                             checked={data.use_junction_particule}
                             onChange={e=>setData({...data, use_junction_particule: e.target.checked})}/>
-                        <label>Enable junction particules</label>
+                        <label className='text-xs'>Enable junction particules</label>
                     </div>
                     <textarea 
                         value={data.junction_particules} 
@@ -69,7 +103,7 @@ const Form = ({data, setData}) => {
                             value={true}
                             checked={data.use_core_particule}
                             onChange={e=>setData({...data, use_core_particule: e.target.checked})}/>
-                        <label>Enable core particules</label>
+                        <label className='text-xs'>Enable core particules</label>
                     </div>
 
                     {data.use_core_particule && <div className=''>

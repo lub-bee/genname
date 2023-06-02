@@ -10,7 +10,7 @@ const Footer = () => {
                  <i className='fa-regular fa-copyright'></i> Lubbee 2023
             </div>
             <div className=''>
-                Version 1.0
+                Version 1.1.0
             </div>
         </div>
     );
