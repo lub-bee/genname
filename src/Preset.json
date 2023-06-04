@@ -1,0 +1,29 @@
+[
+    {
+        "group":"Lord of the Ring", 
+        "presets": [
+            {
+                "name":"Dwarf",
+                "use_junction_particule": true,
+                "junction_particules": ["a","i","u","e","o","ou","oe","oë","ū"],        
+                "start_particules": ["b","d","dw","gr","g","gl","o","thr","th","u","w"],
+                "use_core_particule": true,
+                "min_core_iteration": 0,
+                "max_core_iteration": 3,
+                "core_particules": ["dr","f","mb","l","lr","thr","v"],
+                "end_particules": ["i","n","nd","r","rh"]
+            },
+            {
+                "name":"Elf",
+                "use_junction_particule": true,
+                "start_particules": ["a","c","gal","e","idr","in","m","nim"],
+                "junction_particules": ["a","ae","ä","ë","e","ē","i","ï","í","o","ö","oe","u","ü","ū"],
+                "use_core_particule": true,
+                "min_core_iteration": 0,
+                "max_core_iteration": 3,
+                "core_particules": ["ngr","dh","leb","lebr","leg","rd"],
+                "end_particules": ["th","d","l","n","rn","wen","til","r","më","dil"]
+            }
+        ]
+    }
+]
