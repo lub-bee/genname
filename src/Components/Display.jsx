@@ -160,7 +160,7 @@ const Display = ({data}) => {
 
             </div>
 
-            <div className='grid grid-cols-3 px-4 py-2 bg-white sm:border-x border-slate-800'>
+            <div className='grid grid-cols-2 sm:grid-cols-3 px-4 py-2 bg-white sm:border-x border-slate-800'>
                 {name_list}
             </div>
 
