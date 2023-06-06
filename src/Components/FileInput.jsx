@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-function FileInput({ onFileRead }) {
+function FileInput({ onFileRead, t }) {
     const fileInputRef = useRef(null);
     
   
@@ -25,7 +25,7 @@ function FileInput({ onFileRead }) {
   
     return (
         <div onClick={handleClick} className='btn flex-1'>
-            <i className='fa-solid fa-file-import text-base'></i> Import
+            <i className='fa-solid fa-file-import text-base'></i> {t("Import")}
             <input
                 type="file"
                 accept=".json"

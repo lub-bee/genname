@@ -1,7 +1,7 @@
 import React from 'react';
 import Clipboard from './Clipboard';
 
-const NameItem = ({name, id, handleRegen}) => {
+const NameItem = ({name, id, handleRegen, t}) => {
 
     return (
         <div className="capitalize hover:bg-gray-100 text-white hover:text-gray-400 transition cursor-pointer flex justify-between items-center p-2">
@@ -10,12 +10,12 @@ const NameItem = ({name, id, handleRegen}) => {
                 {name} 
             </div>
 
-            <div className='group transition px-2' title="Regenerate" onClick={(e)=>handleRegen(e,id)}>
+            <div className='group transition px-2' title={t("Regenerate")} onClick={(e)=>handleRegen(e,id)}>
                 <i className='fa-solid fa-arrows-rotate group-hover:animate-spin'></i>
             </div>
 
-            <Clipboard text={name}>
-                <div className='group transition px-2 relative flex' title="Copy to clipboard">
+            <Clipboard text={name} t={t}>
+                <div className='group transition px-2 relative flex' title={t("Copy to clipboard")}>
                     <i className='fa-solid fa-clipboard group-hover:animate-ping relative inline-flex opacity-75'></i>
                     <i className='fa-solid fa-clipboard absolute inline-flex'></i>
                 </div>

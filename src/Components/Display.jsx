@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import NameItem from './NameItem';
 import Clipboard from './Clipboard';
 
-const Display = ({data}) => {
+const Display = ({data, t}) => {
 
     const [names, setNames] = useState([])
 
@@ -115,7 +115,7 @@ const Display = ({data}) => {
 
     // to display all the name in a NameItem
     const name_list = names.map( (item, index)=>{
-        return <NameItem name={item} key={index} id={index} handleRegen={handleRegen}/>
+        return <NameItem name={item} key={index} id={index} handleRegen={handleRegen} t={t}/>
     })
 
     function possibilities(){
@@ -137,21 +137,21 @@ const Display = ({data}) => {
             <div className='sm:rounded-t-lg bg-slate-700 text-gray-300 flex items-center px-6 py-1 sm:border border-slate-800'>
 
                 <div className='flex-1 h1'>
-                    Name generated
+                    {t("Name generated")}
                 </div>
 
-                <div className='p-2' onClick={handleSort} title="Order Alphabetically">
+                <div className='p-2' onClick={handleSort} title={t("Order Alphabetically")}>
                     <i className='fa-solid fa-arrow-down-a-z hover:animate-spin-once'></i>
                 </div>
 
-                <div className='p-2' onClick={handleRegen} title="Regenerate">
+                <div className='p-2' onClick={handleRegen} title={t("Regenerate")}>
                     <i className='fa-solid fa-arrows-rotate hover:animate-spin'></i>
                 </div>
 
-                <Clipboard text={names.join(",")}>
+                <Clipboard text={names.join(",")} t={t}>
                     <div 
                         className='group transition px-2 relative flex' 
-                        title="Copy to clipboard" 
+                        title={t("Copy to clipboard")} 
                         >
                         <i className='fa-solid fa-clipboard group-hover:animate-ping relative inline-flex opacity-75'></i>
                         <i className='fa-solid fa-clipboard absolute inline-flex'></i>
@@ -165,7 +165,7 @@ const Display = ({data}) => {
             </div>
 
             <div className='bg-slate-500 text-white px-6 py-1 sm:rounded-b-lg sm:border border-slate-800 text-right text-2xs uppercase tracking-widest'>
-                {names.length} over {Number(possibilities()).toLocaleString('ja-JA')} associations possible
+                {names.length} {t("over")} {Number(possibilities()).toLocaleString('ja-JA')} {t("possible associations")}
             </div>
         </div>
     );
