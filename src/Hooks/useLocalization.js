@@ -24,11 +24,7 @@ const useLocalization = (defaultLanguage) => {
             "Max Repetitions":"Max Repetitions",
             "End Particules":"End Particules",
             "Number of name generated":"Number of name generated",
-            "":"",
-            "":"",
-            "":"",
-            "":"",
-            "":"",
+            // "":"",
         },
         fr: {
             "preset" : "Préconfiguration",
@@ -46,21 +42,16 @@ const useLocalization = (defaultLanguage) => {
             "Junction Particules":"Particules de jonction",
             "Enable the particules":"Activer ces particules",
             "Core Particules":"Particules centrales",
-            "Min Repetitions":"Répétitions minimum",
-            "Max Repetitions":"Répétitions maximum",
+            "Min Repetitions":"Répétitions min",
+            "Max Repetitions":"Répétitions max",
             "End Particules":"Particules de fin",
             "Number of name generated":"Nombre à générer",
-            "":"",
-            "":"",
-            "":"",
-            "":"",
+            // "":"",
         }
     }
 
     const getTranslation = (key) => {
-        console.log(languageFiles, language, key)
         const languageFile = languageFiles[language]
-        console.log(languageFile)
 
         return languageFile[key] || key
     }
