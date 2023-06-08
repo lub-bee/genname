@@ -9,7 +9,7 @@
                 "start_particules": ["b","d","dw","gr","g","gl","o","thr","th","u","w"],
                 "use_core_particule": true,
                 "min_core_iteration": 0,
-                "max_core_iteration": 3,
+                "max_core_iteration": 2,
                 "core_particules": ["dr","f","mb","l","lr","thr","v"],
                 "end_particules": ["i","n","nd","r","rh"]
             },
@@ -19,11 +19,36 @@
                 "start_particules": ["a","c","gal","e","idr","in","m","nim"],
                 "junction_particules": ["a","ae","ä","ë","e","ē","i","ï","í","o","ö","oe","u","ü","ū"],
                 "use_core_particule": true,
-                "min_core_iteration": 0,
-                "max_core_iteration": 3,
+                "min_core_iteration": 1,
+                "max_core_iteration": 2,
                 "core_particules": ["ngr","dh","leb","lebr","leg","rd"],
                 "end_particules": ["th","d","l","n","rn","wen","til","r","më","dil"]
+            },
+            {
+                "name": "Hobbit",
+                "use_junction_particule": true,
+                "junction_particules": ["a","i","u","e","o","ia","ou"],
+                "start_particules": ["f","p","m","s","b","fr","l"],
+                "use_core_particule": true,
+                "min_core_iteration": 0,
+                "max_core_iteration": "2",
+                "core_particules": ["l","lb","r","m","s","nt"],
+                "end_particules": ["bo","bon","don","se","rry","pin","grin","doc"],
+                "iteration": "30"
+            },
+            {
+                "name": "Gondor - Human",
+                "use_junction_particule": true,
+                "junction_particules": ["i","o","a","u"],
+                "start_particules": ["b","f","ar","i","e","th"],
+                "use_core_particule": true,
+                "min_core_iteration": "1",
+                "max_core_iteration": "3",
+                "core_particules": ["r","m","g","th","ld","r"],
+                "end_particules": ["r","rn","n"],
+                "iteration": "30"
             }
+
         ]
     }
 ]

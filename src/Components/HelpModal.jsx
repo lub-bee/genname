@@ -61,7 +61,7 @@ const HelpModal = ({setOpenHelp, t}) => {
                                     <div className={(particule=="core"?"text-green-500 bg-green-100 font-bold px-1":"")}>l</div>
                                     <div className={(particule=="junction"?"text-purple-500 bg-purple-100 font-bold px-1":"")}>a</div>
                                     <div className={(particule=="core"?"text-green-500 bg-green-100 font-bold px-1":"")}>dr</div>
-                                    <div className={(particule=="end"?"text-red-500 bg-red-100 font-bold px-1":"")}>ielle</div>
+                                    <div className={(particule=="end"?"text-red-500 bg-red-100 font-bold px-1":"")}>iel</div>
                                 </div>}
                                 {particuleMode == "association" && <div className='flex h-20 mt-2 p-4 text-xl justify-center items-center border rounded-lg'>
                                     <div className={(particule=="start"?"text-blue-500 bg-blue-100 font-bold px-1":"")}>Black</div>
