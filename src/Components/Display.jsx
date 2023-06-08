@@ -140,17 +140,17 @@ const Display = ({data, t}) => {
                     {t("Name generated")}
                 </div>
 
-                <div className='p-2' onClick={handleSort} title={t("Order Alphabetically")}>
-                    <i className='fa-solid fa-arrow-down-a-z hover:animate-spin-once'></i>
+                <div className='px-2 py-1 mr-2 cursor-pointer group uppercase border border-gray-200 rounded bg-gray-400 text-slate-700' onClick={handleRegen} title={t("Regenerate")}>
+                    {t("Regenerate")} <i className='fa-solid fa-arrows-rotate group-hover:animate-spin'></i>
                 </div>
 
-                <div className='p-2' onClick={handleRegen} title={t("Regenerate")}>
-                    <i className='fa-solid fa-arrows-rotate hover:animate-spin'></i>
+                <div className='p-2 cursor-pointer' onClick={handleSort} title={t("Order Alphabetically")}>
+                    <i className='fa-solid fa-arrow-down-a-z hover:animate-spin-once'></i>
                 </div>
 
                 <Clipboard text={names.join(",")} t={t}>
                     <div 
-                        className='group transition px-2 relative flex' 
+                        className='group transition px-2 relative flex cursor-pointer' 
                         title={t("Copy to clipboard")} 
                         >
                         <i className='fa-solid fa-clipboard group-hover:animate-ping relative inline-flex opacity-75'></i>

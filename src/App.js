@@ -23,11 +23,11 @@ function App() {
 
             <div className='flex flex-col lg:flex-row sm:gap-6'>
 
-                {/* form */}
-                <Form data={data} setData={setData} t={t}/>
-
                 {/* display */}
                 <Display data={data} t={t}/>
+
+                {/* form */}
+                <Form data={data} setData={setData} t={t}/>
             
             </div>
 
